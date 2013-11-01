@@ -42,6 +42,9 @@ def main():
     # Parse all command line args.
     args = parse_args()
 
+    if args.logo:
+        logo()
+
     # Setup settings path: Take it either from command line or get default path
     if hasattr(args, 'settings') and args.settings:
         settings = args.settings
@@ -84,6 +87,10 @@ def parse_args():
         action='version',
         version=get_version(),
         help='Show version number and exit.')
+    parser.add_argument(
+        '--logo',
+        action='store_true',
+        help=argparse.SUPPRESS)
 
     # Init subparsers
     subparsers = parser.add_subparsers(
@@ -360,6 +367,20 @@ def django_command_line_utility(settings, args):
         execute_from_command_line(args.django_args)
         return_value = 0
     return return_value
+
+
+def logo():
+    """
+    Easter egg.
+    """
+    text = [' ' * 5 + '/']
+    text.append('|' + '_' * 3 + '/' + '_' * 2)
+    text.append('|' + ' ' * 3 + '\\__\\')
+    text.append('|')
+    text.append('|' + '_' * 9)
+    text.append('\\' + ' ' * 9 + '/')
+    text.append(' \\ ' + '_' * 5 + ' /')
+    print '\n'.join(text)
 
 
 if __name__ == "__main__":
