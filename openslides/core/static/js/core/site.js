@@ -1143,6 +1143,7 @@ angular.module('OpenSlidesApp.core.site', [
     '$scope',
     function ($scope) {
         $scope.greeting = 'Hallo Welt.';
+        console.log($scope.$parent.$parent.item.id);
     }
 ])
 //TEST CODE ONLY
