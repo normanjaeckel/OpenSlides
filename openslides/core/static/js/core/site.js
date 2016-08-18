@@ -1118,6 +1118,37 @@ angular.module('OpenSlidesApp.core.site', [
     }
 ])
 
+
+
+//TEST CODE ONLY
+.run([
+    'templateHooks',
+    function (templateHooks) {
+        templateHooks.registerHook({
+            Id: 'motionPollFormButtons',
+            template: 'Test 1 + 1 = {{ 1 + 1 }}.',
+        });
+    }
+])
+.run([
+    'templateHooks',
+    function (templateHooks) {
+        templateHooks.registerHook({
+            Id: 'itemDetailListOfSpeakersButtons',
+            template: '<div ng-controller="MyCtrl">Test {{ greeting }}</div>',
+        });
+    }
+])
+.controller('MyCtrl', [
+    '$scope',
+    function ($scope) {
+        $scope.greeting = 'Hallo Welt.';
+    }
+])
+//TEST CODE ONLY
+
+
+
 //Mark all core config strings for translation in Javascript
 .config([
     'gettext',
